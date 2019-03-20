@@ -69,13 +69,19 @@ const perDay = data => {
 	}
 };
 
-const CITIES = ['Sydney', 'Bogota'];
+const CITIES = ['Sydney', 'Bogota', 'Shanghai', 'Rome', 'Miami'];
 var selectedCity = CITIES[0];
 
+let ind = 1;
 $('#left-arrow').click(function() {
-	let ind = 1;
 	selectedCity = CITIES[ind];
+	ind++;
+	console.log('click index', ind);
 	console.log('selected b4 fetch at jquery', selectedCity);
+	if (ind > CITIES.length) {
+		ind = 0;
+		selectedCity = CITIES[ind];
+	}
 	fetchWeather(selectedCity);
 });
 
