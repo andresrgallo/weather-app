@@ -6,13 +6,11 @@ const app = express();
 
 app.use(cors({ origin: '*' }));
 
-const forecast = require('./utils/forecast');
+const { forecast, theCity } = require('./utils/forecast');
 
-// const publicDirectoryPath = path.join(__dirname, '../public')
-
-// app.use(express.static(publicDirectoryPath))
-
-app.get('/weather', (req, res) => {
+app.get('/weather/:city', (req, res) => {
+	theCity(req.params.city);
+	console.log('at get', req.params.city);
 	forecast((e, body, city) => {
 		if (e) {
 			return res.send({ e });
