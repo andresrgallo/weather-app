@@ -6,7 +6,7 @@ import { perDay, iconType, selectedCity } from './jquery/jqueryevents';
 })();
 
 const fetchWeather = selectedCity => {
-	console.log('selected city at fetch index', selectedCity);
+	// console.log('selected city at fetch index', selectedCity);
 
 	fetch(`http://localhost:3000/weather/${selectedCity}`, {
 		method: 'GET',
@@ -24,9 +24,10 @@ const fetchWeather = selectedCity => {
 
 			response.json().then(function(data) {
 				const theWeather = data.body;
-				console.log('dataaaaa at client fetch', data);
+				console.log('city  at client fetch', data.city);
+				console.log('dataaaaa at client fetch', theWeather.daily.data);
 				$('#city').text(data.city);
-				iconType('#icon', theWeather.daily.icon);
+				iconType('#icon', theWeather.daily.data[0].icon);
 				$('#temperature').text(Math.floor(theWeather.currently.temperature));
 				$('#range').text(
 					`${Math.floor(
@@ -44,7 +45,7 @@ const fetchWeather = selectedCity => {
 			console.log('Fetch Error :-S', err);
 		});
 };
-console.log('selected city at index', selectedCity);
+// console.log('selected city at index', selectedCity);
 fetchWeather(selectedCity);
 
 export { fetchWeather };

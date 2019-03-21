@@ -50,17 +50,29 @@ body {
 				font-size: $font-hero;
 			}
 		}
+		#h-line {
+			height: 2px;
+			width: 700px;
+			margin: auto;
+			background: grey;
+			margin-bottom: 40px;
+		}
 		#days {
 			display: flex;
-			justify-content: space-evenly;
+			justify-content: center;
 			text-align: center;
-			.date-day,
-			.day-name {
-				color: white;
-			}
-			.day-icon {
-				img {
-					height: 50px;
+			.day-info {
+				padding-right: 50px;
+				.date-day,
+				.day-name {
+					color: white;
+					padding-bottom: 20px;
+				}
+				.day-icon {
+					padding-bottom: 20px;
+					img {
+						height: 50px;
+					}
 				}
 			}
 		}
