@@ -1,28 +1,90 @@
 $font-hero: 50px;
+
+//Media queries Mixins and Var
+// Small tablets and large smartphones (landscape view)
+$screen-sm-max: 576px;
+
+// Small tablets (portrait view)
+$screen-md-max: 768px;
+
+// Tablets and small desktops
+$screen-lg-max: 992px;
+
+@mixin sm {
+	@media (max-width: #{$screen-sm-max}) {
+		@content;
+	}
+}
+
+// Medium devices
+@mixin md {
+	@media (max-width: #{$screen-md-max}) {
+		@content;
+	}
+}
+
+// Large devices
+@mixin lg {
+	@media (max-width: #{$screen-lg-max}) {
+		@content;
+	}
+}
+
 @mixin arrows {
 	background: #b1acac;
 	border-radius: 50%;
 	height: $font-hero;
-	//padding: 20px;
+	@include lg {
+		width: 30px;
+		height: 30px;
+	}
 }
 
 body {
 	box-sizing: border-box;
 	height: 100vh;
 	background-size: cover;
+	background-repeat: no-repeat;
+	@include lg {
+		height: 100vh;
+	}
+
 	#weather-info {
 		#city {
 			font-size: $font-hero;
 			padding: 50px 0;
 			color: white;
 			text-align: center;
+			@include md {
+				padding: 30px 0;
+				font-size: $font-hero - 20px;
+			}
+			@include sm {
+				padding: 20px 0;
+				font-size: $font-hero - 30px;
+			}
 		}
 		#icons {
 			display: flex;
 			justify-content: center;
+			#icon {
+				img {
+					@include lg {
+						width: 135px;
+						height: 110px;
+					}
+					@include sm {
+						width: 100px;
+						height: 70px;
+					}
+				}
+			}
 			#left-arrow {
 				padding-right: 70px;
 				align-self: center;
+				@include lg {
+					padding-right: 20px;
+				}
 				img {
 					@include arrows;
 				}
@@ -30,6 +92,9 @@ body {
 			#right-arrow {
 				padding-left: 70px;
 				align-self: center;
+				@include lg {
+					padding-left: 20px;
+				}
 				img {
 					@include arrows;
 				}
@@ -40,14 +105,23 @@ body {
 			flex-direction: column;
 			align-items: center;
 			padding-bottom: 40px;
+			@include lg {
+				padding-bottom: 20px;
+			}
 			#temperature,
 			#current,
 			#range {
 				color: white;
 				padding: 20px;
+				@include md {
+					padding: 10px;
+				}
 			}
 			#temperature {
 				font-size: $font-hero;
+				@include md {
+					font-size: $font-hero - 20px;
+				}
 			}
 		}
 		#h-line {
@@ -56,13 +130,32 @@ body {
 			margin: auto;
 			background: grey;
 			margin-bottom: 40px;
+			@include lg {
+				width: 300px;
+			}
+			@include sm {
+				margin-bottom: 20px;
+			}
 		}
 		#days {
 			display: flex;
 			justify-content: center;
 			text-align: center;
+			@include lg {
+				flex-wrap: wrap;
+				margin: 0 30px;
+			}
+			@include md {
+				margin: 0 10px;
+			}
 			.day-info {
-				padding-right: 50px;
+				padding: 0 20px;
+				@include md {
+					padding: 0 30px;
+				}
+				@include sm {
+					padding: 0 20px;
+				}
 				.date-day,
 				.day-name {
 					color: white;
@@ -71,7 +164,7 @@ body {
 				.day-icon {
 					padding-bottom: 20px;
 					img {
-						height: 50px;
+						height: 30px;
 					}
 				}
 			}
