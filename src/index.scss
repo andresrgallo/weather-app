@@ -1,6 +1,6 @@
 $font-hero: 50px;
 
-//Media queries Mixins and Var
+//Media queries Mixins and Variables
 // Small tablets and large smartphones (landscape view)
 $screen-sm-max: 576px;
 
@@ -10,6 +10,10 @@ $screen-md-max: 768px;
 // Tablets and small desktops
 $screen-lg-max: 992px;
 
+// Large tablets and desktops
+$screen-xl-max: 1200px;
+
+// Small devices
 @mixin sm {
 	@media (max-width: #{$screen-sm-max}) {
 		@content;
@@ -29,6 +33,8 @@ $screen-lg-max: 992px;
 		@content;
 	}
 }
+
+//Other mixins
 
 @mixin arrows {
 	background: #b1acac;
@@ -52,13 +58,9 @@ body {
 	#weather-info {
 		#city {
 			font-size: $font-hero;
-			padding: 50px 0;
+			padding: 30px 0;
 			color: white;
 			text-align: center;
-			@include md {
-				padding: 30px 0;
-				font-size: $font-hero - 20px;
-			}
 			@include sm {
 				padding: 20px 0;
 				font-size: $font-hero - 30px;
@@ -113,13 +115,13 @@ body {
 			#range {
 				color: white;
 				padding: 20px;
-				@include md {
+				@include sm {
 					padding: 10px;
 				}
 			}
 			#temperature {
 				font-size: $font-hero;
-				@include md {
+				@include sm {
 					font-size: $font-hero - 20px;
 				}
 			}
@@ -134,25 +136,24 @@ body {
 				width: 300px;
 			}
 			@include sm {
-				margin-bottom: 20px;
+				margin-bottom: 30px;
 			}
 		}
 		#days {
 			display: flex;
 			justify-content: center;
 			text-align: center;
+			margin-bottom: 30px;
 			@include lg {
 				flex-wrap: wrap;
 				margin: 0 30px;
+				margin-bottom: 20px;
 			}
-			@include md {
+			@include sm {
 				margin: 0 10px;
 			}
 			.day-info {
 				padding: 0 20px;
-				@include md {
-					padding: 0 30px;
-				}
 				@include sm {
 					padding: 0 20px;
 				}
