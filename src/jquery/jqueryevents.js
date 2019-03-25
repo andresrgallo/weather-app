@@ -35,6 +35,7 @@ const iconType = (id, data) => {
 			case 'cloudy':
 			case 'partly-cloudy-night':
 			case 'wind':
+			case 'fog':
 				$(id).append(`<img class=img-3 src="${ASSETS.cloudy}"/>`);
 				break;
 			case 'clear-day':
@@ -62,6 +63,7 @@ const iconType = (id, data) => {
 			case 'cloudy':
 			case 'partly-cloudy-night':
 			case 'wind':
+			case 'fog':
 				$(`${id} img:nth-child(1)`).remove();
 				$(id).append(`<img class=img-3 src="${ASSETS.cloudy}"/>`);
 				break;

@@ -1,3 +1,4 @@
+import registerServiceWorker from './registerServiceWorker';
 import 'index.scss';
 import { perDay, iconType, selectedCity } from './jquery/jqueryevents';
 
@@ -47,5 +48,7 @@ const fetchWeather = selectedCity => {
 };
 // console.log('selected city at index', selectedCity);
 fetchWeather(selectedCity);
+
+registerServiceWorker();
 
 export { fetchWeather };
