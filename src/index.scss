@@ -46,6 +46,11 @@ $screen-xl-max: 1200px;
 	}
 }
 
+@mixin icon-font {
+	font-size: 250px;
+	color: white;
+}
+
 body {
 	box-sizing: border-box;
 	height: 100vh;
@@ -70,6 +75,9 @@ body {
 			display: flex;
 			justify-content: center;
 			#icon {
+				i {
+					@include icon-font();
+				}
 				img {
 					@include lg {
 						width: 135px;
@@ -163,6 +171,10 @@ body {
 					padding-bottom: 20px;
 				}
 				.day-icon {
+					i {
+						@include icon-font();
+						font-size: 30px;
+					}
 					padding-bottom: 20px;
 					img {
 						height: 30px;

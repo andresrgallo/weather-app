@@ -12,21 +12,16 @@ var info = [];
 
 function theCity(city = 'Sydney') {
 	info = [];
-	console.log('city at theCity forecast', city);
-	console.log(Object.keys(cities));
-	var url = `https://api.darksky.net/forecast/56db65ea49a842b8a48d2e7ebf1923f5/${
+	var url = `https://api.darksky.net/forecast/${process.env.DS_KEY}/${
 		cities[city].lat
 	},${cities[city].lon}?units=si`;
 	info.push(city, url);
-	console.log('function the info array', info);
 }
 
 async function forecast(cb) {
-	console.log('info at forecast', info);
 	try {
 		const resp = await fetch(info[1]);
 		const data = await resp.json();
-
 		cb(null, data, info[0]);
 	} catch (err) {
 		cb('communication is down with service provider', null, null);

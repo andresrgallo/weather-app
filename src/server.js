@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 
@@ -10,7 +11,6 @@ const { forecast, theCity } = require('./utils/forecast');
 
 app.get('/weather/:city', (req, res) => {
 	theCity(req.params.city);
-	console.log('at get', req.params.city);
 	forecast((e, body, city) => {
 		if (e) {
 			return res.send({ e });

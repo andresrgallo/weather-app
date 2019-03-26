@@ -34,8 +34,6 @@ const iconType = (id, data) => {
 			case 'partly-cloudy-day':
 			case 'cloudy':
 			case 'partly-cloudy-night':
-			case 'wind':
-			case 'fog':
 				$(id).append(`<img class=img-3 src="${ASSETS.cloudy}"/>`);
 				break;
 			case 'clear-day':
@@ -43,41 +41,59 @@ const iconType = (id, data) => {
 				break;
 			case 'thunderstorm':
 				$(id).append(`<img class=img-5 src="${ASSETS.thunderStorm}"/>`);
+				break;
+			case 'fog':
+				$(id).append(`<i class="fas fa-smog" />`);
+				break;
+			case 'wind':
+				$(id).append(`<i class="fas fa-wind"></i>`);
 				break;
 			default:
 				$(id).append(`<img class=img-2 src="${ASSETS.snow}"/>`);
 		}
 	} else {
-		console.log('the data at else', data);
-		console.log('the id at else', id);
 		switch (data) {
 			case 'rain':
 				$(`${id} img:nth-child(1)`).remove();
+				$(`${id} i:nth-child(1)`).remove();
 				$(id).append(`<img class=img-1 src="${ASSETS.rain}"/>`);
 				break;
 			case 'snow':
 				$(`${id} img:nth-child(1)`).remove();
+				$(`${id} i:nth-child(1)`).remove();
 				$(id).append(`<img class=img-2 src="${ASSETS.snow}"/>`);
 				break;
 			case 'partly-cloudy-day':
 			case 'cloudy':
 			case 'partly-cloudy-night':
-			case 'wind':
-			case 'fog':
 				$(`${id} img:nth-child(1)`).remove();
+				$(`${id} i:nth-child(1)`).remove();
 				$(id).append(`<img class=img-3 src="${ASSETS.cloudy}"/>`);
 				break;
 			case 'clear-day':
 			case 'sunny':
 				$(`${id} img:nth-child(1)`).remove();
+				$(`${id} i:nth-child(1)`).remove();
 				$(id).append(`<img class=img-4 src="${ASSETS.sunny}"/>`);
 				break;
 			case 'thunderstorm':
 				$(`${id} img:nth-child(1)`).remove();
+				$(`${id} i:nth-child(1)`).remove();
 				$(id).append(`<img class=img-5 src="${ASSETS.thunderStorm}"/>`);
+				break;
+			case 'fog':
+				$(`${id} img:nth-child(1)`).remove();
+				$(`${id} i:nth-child(1)`).remove();
+				$(id).append(`<i class="fas fa-smog" />`);
+				break;
+			case 'wind':
+				$(`${id} img:nth-child(1)`).remove();
+				$(`${id} i:nth-child(1)`).remove();
+				$(id).append(`<i class="fas fa-wind"></i>`);
 				break;
 			default:
 				$(`${id} img:nth-child(1)`).remove();
+				$(`${id} i:nth-child(1)`).remove();
 				$(id).append(`<img class=img-2 src="${ASSETS.snow}"/>`);
 		}
 	}
@@ -86,7 +102,6 @@ const iconType = (id, data) => {
 //INFO PER DAY BOTTOM OF PAGE
 const perDay = data => {
 	const fiveDays = data.slice(0, 5);
-	console.log('5days data', fiveDays);
 	let i = 1;
 	for (let day of fiveDays) {
 		const dateStamp = new Date(day.time * 1000);
