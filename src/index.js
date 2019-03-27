@@ -31,7 +31,7 @@ const fetchWeather = selectedCity => {
 						theWeather.daily.data[0].temperatureHigh
 					)} / ${Math.floor(theWeather.daily.data[0].temperatureLow)}`
 				);
-				$('#current').append(theWeather.currently.summary);
+				$('#current').text('Currently: ' + theWeather.currently.summary);
 				perDay(theWeather.daily.data);
 			});
 		})
